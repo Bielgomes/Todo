@@ -3,7 +3,12 @@
     justify-content: center;
 }
 
+.container {
+    background-color: blue;
+}
+
 .wrapper {
+    margin-top: -25px;
     width: 46rem;
     display: flex;
     justify-content: space-between;
@@ -16,6 +21,7 @@
     padding: 1rem;
     background-color: var(--gray-500);
     border-radius: 8px;
+    color: var(--white);
 }
 
 .wrapper button[type='submit'] {
@@ -29,6 +35,12 @@
     font-size: 0.875rem;
     font-weight: 700;
     color: var(--white);
+
+    transition: background-color 0.5s;
+}
+
+.wrapper button[type='submit']:hover {
+    background-color: var(--blue);
 }
 
 .wrapper button[type='submit'] span {
