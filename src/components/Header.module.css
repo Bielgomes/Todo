@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-700);
+    padding: 5rem;
+}
+
+.header img {
+    width: 1.375rem;
+    margin-right: 1rem;
+}
+
+.header strong {
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+h1 :nth-child(1) {
+    color: var(--blue);
+}
+
+h1 :nth-child(2) {
+    color: var(--purpleDark);
+}
