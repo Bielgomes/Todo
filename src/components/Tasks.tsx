@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 
 import styles from './Tasks.module.css';
 
@@ -9,7 +9,7 @@ import ClipBoard from '../assets/Clipboard.svg'
 import { Task } from './Task';
 import { v4 } from 'uuid'
 
-interface Task {
+export interface Task {
     id: string
     title: string
     isComplete: boolean
@@ -35,6 +35,10 @@ export function Tasks() {
         setNewTask('')
     }
 
+    function onNewTaskIsInvalid(event : InvalidEvent<HTMLInputElement>) {
+        event.target.setCustomValidity('Esse campo é obrigatório!')
+    }
+
     function onCompleteTask(id : string) {
         setTasks(tasks.map(task => {
             if (task.id === id) {
@@ -49,6 +53,7 @@ export function Tasks() {
 
     function handleNewTaskChange(event : ChangeEvent<HTMLInputElement>) {
         setNewTask(event.target.value)
+        event.target.setCustomValidity('')
     }
 
     function onDeleteTask(id : string) {
@@ -72,6 +77,7 @@ export function Tasks() {
                             required
                             onChange={handleNewTaskChange}
                             value={newTask}
+                            onInvalid={onNewTaskIsInvalid}
                         />
                         <button 
                             type="submit"
@@ -116,9 +122,7 @@ export function Tasks() {
                                 tasks.map(task => (
                                     <Task
                                         key={task.id}
-                                        id={task.id}
-                                        title={task.title}
-                                        isComplete={task.isComplete}
+                                        task={task}
                                         onDeleteTask={onDeleteTask}
                                         onCompleteTask={onCompleteTask}
                                     />

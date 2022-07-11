@@ -3,21 +3,21 @@ import { useState } from 'react'
 
 import styles from './Task.module.css'
 
-interface TaskProps {
-    id: string
-    title: string
-    isComplete: boolean
+import { Task as TaskProps } from './Tasks'
+
+interface TasksProps {
+    task: TaskProps
     onDeleteTask: (id: string) => void
     onCompleteTask: (id: string) => void
 }
 
-export function Task({ id, title, isComplete, onDeleteTask, onCompleteTask } : TaskProps) {
+export function Task({ task, onDeleteTask, onCompleteTask } : TasksProps) {
     function handleRemoveTask() {
-        onDeleteTask(id)
+        onDeleteTask(task.id)
     }
 
     function handleFinishTask() {
-        onCompleteTask(id)
+        onCompleteTask(task.id)
     }
 
     return (
@@ -25,12 +25,12 @@ export function Task({ id, title, isComplete, onDeleteTask, onCompleteTask } : T
             <div className={styles.container}>
                 <div className={styles.button}>
                     <button
-                        className={isComplete ? styles.buttonPressed : styles.buttonNotPressed}
+                        className={task.isComplete ? styles.buttonPressed : styles.buttonNotPressed}
                         onClick={handleFinishTask}
                     />
                 </div>
-                <p className={isComplete ? styles.textFinished : styles.text}>
-                    {title}
+                <p className={task.isComplete ? styles.textFinished : styles.text}>
+                    {task.title}
                 </p>
             </div>
             <button
