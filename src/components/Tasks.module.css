@@ -1,6 +1,7 @@
 .header {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .wrapper {
@@ -47,6 +48,7 @@
     margin-top: 4.062rem;
     display: flex;
     justify-content: space-between;
+    font-size: 0.875rem;
 }
 
 .createTasks strong {
@@ -60,8 +62,10 @@
 .tasksCount span {
     background-color: var(--gray-400);
     border-radius: 999px;
-    padding: 0 0.5rem;
+    padding: 2px 0.5rem;
     margin-left: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
 }
 
 .footer {
@@ -76,6 +80,8 @@
     align-items: center;
     justify-content: center;
     height: 15.25rem;
+
+    color: var(--gray-300);
 }
 
 .tasksList img {

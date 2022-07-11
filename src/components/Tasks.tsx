@@ -1,20 +1,82 @@
+import { ChangeEvent, FormEvent, useState } from 'react';
+
 import styles from './Tasks.module.css';
 
 import { PlusCircle } from 'phosphor-react';
 
 import ClipBoard from '../assets/Clipboard.svg'
-import { Taks } from './Task';
+
+import { Task } from './Task';
+import { v4 } from 'uuid'
+
+interface Task {
+    id: string
+    title: string
+    isComplete: boolean
+}
 
 export function Tasks() {
-    let tasksCount = 1;
+    const [tasks, setTasks] = useState<Task[]>([])
+    const [newTask, setNewTask] = useState('')
+    const [tasksCount, setTasksCount] = useState(0)
+
+    function handleAddTask(event : FormEvent) {
+        event.preventDefault()
+
+        const NewTask = {
+            id: v4(),
+            title: newTask,
+            isComplete: false
+        }
+
+        setTasks([...tasks, NewTask])
+        setTasksCount(tasksCount + 1)
+
+        setNewTask('')
+    }
+
+    function onCompleteTask(id : string) {
+        setTasks(tasks.map(task => {
+            if (task.id === id) {
+                return {
+                    ...task,
+                    isComplete: !task.isComplete
+                }
+            }
+            return task
+        }))
+    }
+
+    function handleNewTaskChange(event : ChangeEvent<HTMLInputElement>) {
+        setNewTask(event.target.value)
+    }
+
+    function onDeleteTask(id : string) {
+        setTasks(tasks.filter(t => t.id !== id))
+        setTasksCount(tasksCount - 1)
+    }
+
+    const isNewTaskEmpty = newTask.length === 0
 
     return (
         <div className={styles.header}>
             <div className={styles.container}>
                 <header>
-                    <form className={styles.wrapper}>
-                        <input type="text" placeholder="Adicione uma nova tarefa" required />
-                        <button type="submit">
+                    <form
+                        className={styles.wrapper}
+                        onSubmit={handleAddTask}
+                    >
+                        <input
+                            type="text"
+                            placeholder="Adicione uma nova tarefa"
+                            required
+                            onChange={handleNewTaskChange}
+                            value={newTask}
+                        />
+                        <button 
+                            type="submit"
+                            disabled={isNewTaskEmpty}
+                        >
                             <span>Criar</span>
                             <PlusCircle size={20} weight={"bold"}/>
                         </button>
@@ -24,11 +86,20 @@ export function Tasks() {
                     <div className={styles.tasksCount}>
                         <div className={styles.createTasks}>
                             <strong>Tarefas criadas</strong>
-                            <span>0</span>
+                            <span>{tasksCount}</span>
                         </div>
                         <div className={styles.finishedTasks}>
                             <strong>Concluidas</strong>
-                            <span>0</span>
+                            <span>
+                                {
+                                    tasksCount === 0 ?
+                                    0
+                                    :
+                                    `${tasks.reduce((anterior, atual) => {
+                                        return atual.isComplete ? anterior + 1 : anterior
+                                    }, 0)} de ${tasksCount}`
+                                }
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -41,11 +112,18 @@ export function Tasks() {
                         </div>
                         :
                         <div>
-                            <Taks />
-                            <Taks />
-                            <Taks />
-                            <Taks />
-                            <Taks />
+                            {
+                                tasks.map(task => (
+                                    <Task
+                                        key={task.id}
+                                        id={task.id}
+                                        title={task.title}
+                                        isComplete={task.isComplete}
+                                        onDeleteTask={onDeleteTask}
+                                        onCompleteTask={onCompleteTask}
+                                    />
+                                ))
+                            }
                         </div>
                     }
                 </footer>

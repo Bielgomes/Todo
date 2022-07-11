@@ -13,6 +13,8 @@
   --blue: #4EA8DE;
   --blueDark: #1E6F9F;
 
+  --blueDarkOpacity: rgba(30, 111, 159, 0.2);
+
   --danger: #E25858;
 }
 

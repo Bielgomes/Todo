@@ -1,20 +1,115 @@
 .wrapper {
-    padding: 1rem;
     background-color: var(--gray-500);
+
+    border: 1px solid var(--gray-400);
     border-radius: 8px;
-    display: flex;
-    justify-content: flex-start;
+
+    padding: 1rem;
     margin-bottom: 0.75rem;
+
+    display: flex;
+    justify-content: space-between;
 }
 
 .container {
     display: flex;
-    justify-content: flex-start;
 }
 
 .container p {
+    width: 93%;
+
     margin-left: 0.75rem;
-    font-size: 14px;
-    width: 90%;
+    
+    color: var(--gray-200);
     line-height: 140%;
+    font-size: 0.875rem;
+
+    transition: text-decoration 0.5s, color 0.5s;
+}
+
+.container .textFinished {
+    color: var(--gray-300);
+    text-decoration: line-through;
+}
+
+.delete {
+    appearance: none;
+    
+    width: 1.5rem;
+    height: 1.5rem;
+    
+    color: var(--gray-200);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: 0;
+    border-radius: 4px;
+    
+    background-color: transparent;
+
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.delete:hover {
+    background-color: var(--gray-400);
+    color: var(--danger);
+}
+
+.button {
+    width: 1.5rem;
+    height: 1.5rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonNotPressed {
+    appearance: none;
+
+    border-radius: 100%;
+    border: 2px solid var(--blue);
+
+    width: 1.09rem;
+    height: 1.09rem;
+
+    background-color: transparent;
+
+    transition: background-color 0.2s, border 0.2s;
+}
+
+.buttonNotPressed:hover {
+    background-color: var(--blueDarkOpacity);
+    border: 2px solid var(--blueDark);
+}
+
+.buttonPressed {
+    appearance: none;
+
+    border-radius: 100%;
+    border: 0;
+
+    background-color: var(--purpleDark);
+
+    width: 1.09rem;
+    height: 1.09rem;
+
+    transition: background-color 0.2s;
+}
+
+.buttonPressed::before {
+    content: "✔";
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 0.7rem;
+    color: var(--gray-100);
+}
+
+.buttonPressed:hover {
+    background-color: var(--purple);
 }

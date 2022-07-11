@@ -11,7 +11,8 @@
     "phosphor": "^0.7.1",
     "phosphor-react": "^1.4.1",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
