@@ -1,0 +1,20 @@
+.wrapper {
+    padding: 1rem;
+    background-color: var(--gray-500);
+    border-radius: 8px;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0.75rem;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.container p {
+    margin-left: 0.75rem;
+    font-size: 14px;
+    width: 90%;
+    line-height: 140%;
+}

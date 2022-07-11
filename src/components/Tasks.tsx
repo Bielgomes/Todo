@@ -2,7 +2,12 @@ import styles from './Tasks.module.css';
 
 import { PlusCircle } from 'phosphor-react';
 
+import ClipBoard from '../assets/Clipboard.svg'
+import { Taks } from './Task';
+
 export function Tasks() {
+    let tasksCount = 1;
+
     return (
         <div className={styles.header}>
             <div className={styles.container}>
@@ -15,17 +20,34 @@ export function Tasks() {
                         </button>
                     </form>
                 </header>
-                <footer>
-                    <div>
-                        <div>
+                <div>
+                    <div className={styles.tasksCount}>
+                        <div className={styles.createTasks}>
                             <strong>Tarefas criadas</strong>
                             <span>0</span>
                         </div>
-                        <div>
+                        <div className={styles.finishedTasks}>
                             <strong>Concluidas</strong>
                             <span>0</span>
                         </div>
                     </div>
+                </div>
+                <footer className={styles.footer}>
+                    { tasksCount === 0 ?
+                        <div className={styles.tasksList}>
+                            <img src={ClipBoard} alt="ClipBoard Icon" />
+                            <strong>Você ainda não tem tarefas cadastradas</strong>
+                            <p>Crie tarefas e organize seus itens a fazer</p>
+                        </div>
+                        :
+                        <div>
+                            <Taks />
+                            <Taks />
+                            <Taks />
+                            <Taks />
+                            <Taks />
+                        </div>
+                    }
                 </footer>
             </div>
         </div>
