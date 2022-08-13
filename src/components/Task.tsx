@@ -1,4 +1,4 @@
-import { Trash } from 'phosphor-react'
+import { Check, CheckSquare, Trash } from 'phosphor-react'
 import { useState } from 'react'
 
 import styles from './Task.module.css'
@@ -24,10 +24,18 @@ export function Task({ task, onDeleteTask, onCompleteTask } : TasksProps) {
         <div className={styles.wrapper}>
             <div className={styles.container}>
                 <div className={styles.button}>
-                    <button
-                        className={task.isComplete ? styles.buttonPressed : styles.buttonNotPressed}
-                        onClick={handleFinishTask}
-                    />
+                    {
+                        task.isComplete ?
+                        <button
+                            className={task.isComplete ? styles.buttonPressed : styles.buttonNotPressed}
+                            onClick={handleFinishTask}
+                        ><Check weight='bold' size={12} /></button>
+                        :
+                        <button
+                            className={task.isComplete ? styles.buttonPressed : styles.buttonNotPressed}
+                            onClick={handleFinishTask}
+                        />
+                    }
                 </div>
                 <p className={task.isComplete ? styles.textFinished : styles.text}>
                     {task.title}

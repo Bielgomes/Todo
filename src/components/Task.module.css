@@ -86,6 +86,12 @@
 }
 
 .buttonPressed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--gray-200);
+
     appearance: none;
 
     border-radius: 100%;
@@ -97,17 +103,6 @@
     height: 1.09rem;
 
     transition: background-color 0.2s;
-}
-
-.buttonPressed::before {
-    content: "✔";
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 0.7rem;
-    color: var(--gray-100);
 }
 
 .buttonPressed:hover {
