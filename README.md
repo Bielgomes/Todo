@@ -1,4 +1,4 @@
-### Todo
+# Todo
 <img src="https://i.imgur.com/Sfsk2Tm.gif">
 Todo é o primeiro desafio da Trilha ReactJS da RocketSeat.
 
