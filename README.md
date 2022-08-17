@@ -1,5 +1,5 @@
 # Todo
-<img src="https://i.imgur.com/Sfsk2Tm.gif">
+<img src="https://i.imgur.com/xn9JrI8.gif">
 Todo é o primeiro desafio da Trilha ReactJS da RocketSeat.
 
 ## Funcionalidades
